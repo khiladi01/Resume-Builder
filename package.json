@@ -8,7 +8,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
   },
-  "homepage": "https://khiladi01.github.io/resume-builder",
+  "homepage": "https://khiladi01.github.io/Resume-Builder",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
