@@ -27,7 +27,4 @@ A modern, responsive **Resume Builder** web application built with **React.js**,
 
 ## 📸 Demo
 
-🔗 [Live Demo](https://your-demo-link.com) *(Replace this with your Netlify or GitHub Pages URL)*  
-🎥 [Preview Video](https://your-demo-video.com) *(Optional)*
-
----
+🔗 [Live Demo] 'https://khiladi01.github.io/Resume-Builder/' 
