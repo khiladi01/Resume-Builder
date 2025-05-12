@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 import './App.css';
 
@@ -8,14 +9,16 @@ function App() {
     email: '',
     phone: '',
     address: '',
+    linkedin : '',
+    github : '',
   });
 
   const [education, setEducation] = useState([
-    { id: 1, school: '', degree: '', from: '', to: '' },
+    { id: 1, school: '', degree: '', from: '', to: '' , gpa : ''},
   ]);
 
   const [experience, setExperience] = useState([
-    { id: 1, company: '', position: '', from: '', to: '', description: '' },
+    { id: 1, company: '', position: '', from: '', to: '', url : '' , description: '' },
   ]);
 
   const [skills, setSkills] = useState('');
@@ -113,6 +116,20 @@ function App() {
               value={personal.address}
               onChange={handlePersonalChange}
             />
+             <input
+              type="text"
+              name="linkedin"
+              placeholder="Linkedin"
+              value={personal.linkedin}
+              onChange={handlePersonalChange}
+            />
+             <input
+              type="text"
+              name="github"
+              placeholder="Github"
+              value={personal.github}
+              onChange={handlePersonalChange}
+            />
           </section>
 
           <section>
@@ -145,6 +162,13 @@ function App() {
                   name="to"
                   placeholder="To"
                   value={edu.to}
+                  onChange={(e) => handleEducationChange(edu.id, e)}
+                />
+                <input
+                  type="text"
+                  name="gpa"
+                  placeholder="Gpa"
+                  value={edu.gpa}
                   onChange={(e) => handleEducationChange(edu.id, e)}
                 />
                 <button className="remove-btn" onClick={() => removeEducation(edu.id)}>Remove</button>
@@ -185,6 +209,13 @@ function App() {
                   value={exp.to}
                   onChange={(e) => handleExperienceChange(exp.id, e)}
                 />
+                <input
+                  type="text"
+                  name="url"
+                  placeholder="Company URL"
+                  value={exp.url}
+                  onChange={(e) => handleExperienceChange(exp.id, e)}
+                />
                 <textarea
                   name="description"
                   placeholder="Description"
@@ -213,13 +244,21 @@ function App() {
           <h2>Resume Preview</h2>
           <div className="resume">
             <h3>{personal.fullName}</h3>
-            <p>{personal.email} | {personal.phone} | {personal.address}</p>
+            <p>{personal.email} | {personal.phone}</p>
+            <p>{personal.address}</p>
+            <Link to={personal.linkedin}>
+             <p>{personal.linkedin}</p>
+            </Link>
+            <Link to={personal.github}>
+            <p>{personal.github}</p>
+            </Link>
 
             <h4>Education</h4>
             {education.map((edu) => (
               <div key={edu.id}>
                 <p><strong>{edu.school}</strong> - {edu.degree}</p>
                 <p>{edu.from} - {edu.to}</p>
+                <p>{edu.gpa}</p>
               </div>
             ))}
 
@@ -228,6 +267,9 @@ function App() {
               <div key={exp.id}>
                 <p><strong>{exp.position}</strong> at {exp.company}</p>
                 <p>{exp.from} - {exp.to}</p>
+                <Link to={exp.url}>
+                <p>{exp.url}</p>
+                </Link>
                 <p>{exp.description}</p>
               </div>
             ))}
@@ -236,6 +278,11 @@ function App() {
             <p>{skills}</p>
           </div>
         </div>
+      </div>
+      <div>
+        <p className='owner'>
+          Design & Created By Raushan Raj
+        </p>
       </div>
     </div>
   );
