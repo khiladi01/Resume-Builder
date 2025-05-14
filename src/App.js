@@ -2,6 +2,10 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 import './App.css';
+import './AppAnimation.css';
+import './AppAnimationLeftRight.css';
+import './AppAnimationStar.css';
+import './AppAnimationBlinkRedBlast.css';
 
 function App() {
   const [personal, setPersonal] = useState({
@@ -83,11 +87,11 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Resume Builder</h1>
+      <h1 className="blast-animation">Resume Builder</h1>
       <div className="builder-preview">
         <div className="builder">
           <section>
-            <h2>Personal Information</h2>
+            <h2 className="blast-left-right-animation">Personal Information</h2>
             <input
               type="text"
               name="fullName"
@@ -133,7 +137,7 @@ function App() {
           </section>
 
           <section>
-            <h2>Education</h2>
+            <h2 className="blast-left-right-animation">Education</h2>
             {education.map((edu) => (
               <div key={edu.id} className="education-item">
                 <input
@@ -171,14 +175,21 @@ function App() {
                   value={edu.gpa}
                   onChange={(e) => handleEducationChange(edu.id, e)}
                 />
-                <button className="remove-btn" onClick={() => removeEducation(edu.id)}>Remove</button>
+                <button className="remove-btn" onClick={(e) => {
+                  const btn = e.currentTarget;
+                  btn.classList.add('blink-red-blast-animation');
+                  setTimeout(() => {
+                    btn.classList.remove('blink-red-blast-animation');
+                    removeEducation(edu.id);
+                  }, 2000);
+                }}>Remove</button>
               </div>
             ))}
-            <button className="add-btn" onClick={addEducation}>Add Education</button>
+            <button className="add-btn" onClick={(e) => { addEducation(); e.currentTarget.classList.add('star-shine-animation'); setTimeout(() => { e.currentTarget.classList.remove('star-shine-animation'); }, 5000); }}>Add Education</button>
           </section>
 
           <section>
-            <h2>Experience</h2>
+            <h2 className="blast-left-right-animation">Experience</h2>
             {experience.map((exp) => (
               <div key={exp.id} className="experience-item">
                 <input
@@ -222,14 +233,21 @@ function App() {
                   value={exp.description}
                   onChange={(e) => handleExperienceChange(exp.id, e)}
                 />
-                <button className="remove-btn" onClick={() => removeExperience(exp.id)}>Remove</button>
+                <button className="remove-btn" onClick={(e) => {
+                  const btn = e.currentTarget;
+                  btn.classList.add('blink-red-blast-animation');
+                  setTimeout(() => {
+                    btn.classList.remove('blink-red-blast-animation');
+                    removeExperience(exp.id);
+                  }, 5000);
+                }}>Remove</button>
               </div>
             ))}
-            <button className="add-btn" onClick={addExperience}>Add Experience</button>
+            <button className="add-btn" onClick={(e) => { addExperience(); e.currentTarget.classList.add('star-shine-animation'); setTimeout(() => { e.currentTarget.classList.remove('star-shine-animation'); }, 5000); }}>Add Experience</button>
           </section>
 
           <section>
-            <h2>Skills</h2>
+            <h2 className="blast-left-right-animation">Skills</h2>
             <textarea
               name="skills"
               placeholder="List your skills separated by commas"

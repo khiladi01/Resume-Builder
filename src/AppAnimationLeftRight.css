@@ -1,0 +1,25 @@
+/* Animation keyframes for moving from left to right with blast effect */
+@keyframes blastLeftRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.8);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(20px) scale(1.1);
+    filter: blur(0);
+  }
+  70% {
+    transform: translateX(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.blast-left-right-animation {
+  animation: blastLeftRight 1s ease forwards;
+}
