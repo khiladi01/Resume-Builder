@@ -32,6 +32,7 @@ function App() {
   // Handlers for personal info
   const handlePersonalChange = (e) => {
     setPersonal({ ...personal, [e.target.name]: e.target.value });
+    // console.log("Personal Details :" , personal.fullName);
   };
 
   // Handlers for education
