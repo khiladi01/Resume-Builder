@@ -25,26 +25,85 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#hero{
-  background-image: url('https://images.pexels.com/photos/5668869/pexels-photo-5668869.jpeg?auto=compress&cs=tinysrgb&w=600');
+#hero {
+  position: relative;
+  background-image: url('../app//assets/hero-background.jpg');
   background-position: center;
   background-size: cover;
+  box-shadow: inset 0 0 5px #212121;
+  color: #f0f0f0; /* brighter text color */
 }
 
-/* Updated animation keyframes for left to right movement and back to center */
-@keyframes moveLeftToRight {
+#herobutton{
+  box-shadow: inset 0 0 10px #212121;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay to decrease background brightness */
+  z-index: 0;
+}
+
+#hero > * {
+  position: relative;
+  z-index: 1; /* ensure text is above overlay */
+}
+
+/* Updated animation keyframes for left to right movement with bulging effect */
+@keyframes moveLeftToRightBulge {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-100%) scale(1);
   }
   50% {
-    transform: translateX(100%);
+    transform: translateX(100%) scale(1.2);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(0%) scale(1);
   }
 }
 
-/* Animation class for one-time left to right movement */
+/* Animation class for one-time left to right movement with bulging effect */
+.move-left-to-right-bulge {
+  animation: moveLeftToRightBulge 3s ease-in-out forwards;
+}
+
+/* Updated animation keyframes for header left to right movement with bulging effect */
+@keyframes moveLeftToRightHeaderBulge {
+  0% {
+    transform: translateX(-100%) scale(1);
+  }
+  50% {
+    transform: translateX(100%) scale(1.3);
+  }
+  100% {
+    transform: translateX(0%) scale(1);
+  }
+}
+
+/* Animation class for header one-time left to right movement with bulging effect */
 .move-left-to-right {
-  animation: moveLeftToRight 3s ease-in-out forwards;
+  animation: moveLeftToRightHeaderBulge 3s ease-in-out forwards;
+}
+
+/* New animation keyframes for top to bottom movement with bulging effect */
+@keyframes moveTopToBottomBulge {
+  0% {
+    transform: translateY(-100%) scale(1);
+  }
+  50% {
+    transform: translateY(100%) scale(1.2);
+  }
+  100% {
+    transform: translateY(0%) scale(1);
+  }
+}
+
+/* Animation class for one-time top to bottom movement with bulging effect */
+.move-top-to-bottom-bulge {
+  animation: moveTopToBottomBulge 3s ease-in-out forwards;
 }

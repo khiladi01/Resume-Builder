@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Resume Builder",
+  title: "PixelProfile ",
   icons: {
     icon: '/resume.ico/favicon.ico', // set resume builder icon
   },
