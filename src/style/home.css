@@ -1,0 +1,31 @@
+#herohome {
+  position: relative; 
+  box-shadow: inset 0 0 10px whitesmoke;
+  background-image: url('../assets/Home/home-bg.png');
+  background-position: center;
+  background-size: cover;
+  z-index: 0;
+  color: #fff;
+}
+
+#herohome::before {
+  content: '';
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 33, 33, 0.7);
+  z-index: 0; 
+  pointer-events: none; 
+}
+
+#herohome * {
+  position: relative; 
+  z-index: 1;
+}
+
+#homebutton{
+    box-shadow: inset 0 0 10px black;
+}
+

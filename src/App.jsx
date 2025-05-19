@@ -1,5 +1,6 @@
 import { Router, Routes, Route } from 'react-router-dom';
 import Header from './pages/Header';
+import Footer from './pages/Footer';
 import Home from './components/Home';
 import Detail from './components/Userdetail';
 import Edutra from './components/UserEd&Tr';
@@ -16,19 +17,20 @@ function App() {
     <Header />
       <Routes>
 
-        <Route path='/' />
+        <Route path='/' element={<Home />} />
 
-        <Route path='/detail' />
+        <Route path='/detail' element={<Detail />} />
 
-        <Route path='/summary' />
+        <Route path='/summary' element={<Summary />} />
 
-        <Route path='/skill' />
+        <Route path='/skill' element={<Skill />} />
 
-        <Route path='/experience' />
+        <Route path='/experience' element={<Experience />} />
 
-        <Route path='/educationtraining' />
+        <Route path='/educationtraining' element={<Edutra />} />
 
       </Routes>
+      <Footer />
     </>
   )
 }
