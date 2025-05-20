@@ -59,7 +59,7 @@ const Footer = () => {
 
 {/* copyright */}
 <div className="h-[30px] w-full bg-[#1E1E2F] flex justify-center items-center select-none">
-<p className="text-sm text-rose-100"> {Date.now}© akki profilepixel all right reserved </p>
+<p className="text-sm text-rose-100">2025 © akki profilepixel all right reserved </p>
 </div>
         </>
     )
