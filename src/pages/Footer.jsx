@@ -3,8 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone , faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import '../style/header.css';
+import Swal from "sweetalert2";
 
 const Footer = () => {
+
+  const handlesupport = () => {
+          Swal.fire({
+            title: "Sets realistic expectations without being boring!",
+            text: "",
+            icon: "info",
+            confirmButtonColor: "#6366F1",
+            confirmButtonText: "Back",
+          });
+        };
 
     return(
         <>
@@ -44,13 +55,13 @@ const Footer = () => {
     <div>
       <h2 className="text-[#CBD5E1] text-2xl font-medium">Support</h2>
       <div className="pt-4">
-        <Link to="/" className="text-sm text-rose-200 font-normal hover:text-rose-300">Privacy Policy</Link>
+        <Link to="" onClick={handlesupport} className="text-sm text-rose-200 font-normal hover:text-rose-300">Privacy Policy</Link>
       </div>
       <div className="pt-4">
-        <Link to="/" className="text-sm text-rose-200 font-normal hover:text-rose-300">Terms Of Services</Link>
+        <Link to="" onClick={handlesupport} className="text-sm text-rose-200 font-normal hover:text-rose-300">Terms Of Services</Link>
       </div>
       <div className="pt-4">
-        <Link to="/" className="text-sm text-rose-200 font-normal hover:text-rose-300">Cookies & Tracking Policy</Link>
+        <Link to="" onClick={handlesupport} className="text-sm text-rose-200 font-normal hover:text-rose-300">Cookies & Tracking Policy</Link>
       </div>
     </div>
 
