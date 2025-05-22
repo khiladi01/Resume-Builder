@@ -10,11 +10,59 @@
 }
 
 #detailsubmitbutton{
-    height: 40px;
+    height: 30px;
     width: 200px;
     border: 0px;
     outline: 0px;
     box-shadow: inset 0 0 5px #212121;
     display: flex;
     justify-content: center;
+}
+
+/* Blinking stars animation */
+@keyframes blinkingStars {
+  0%, 100% {
+    box-shadow: 0 0 1px 2px whitesmoke, 0 0 2px 3px whitesmoke;
+  }
+  50% {
+    box-shadow: 0 0 1px 2px cyan, 0 0 1px 2px cyan;
+  }
+}
+
+.blinking-stars {
+  animation: blinkingStars 1s infinite;
+  position: relative;
+}
+
+/* Bulging effect animation */
+@keyframes bulgingEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bulging-effect {
+  animation: bulgingEffect 0.5s ease forwards;
+  position: relative;
+}
+
+/* Modern blinking stars inside input bar for .com */
+@keyframes blinkingStarsCom {
+  0%, 100% {
+    box-shadow: inset 0 0 8px 2px pink, inset 0 0 15px 5px pink;
+  }
+  50% {
+    box-shadow: inset 0 0 4px 1px pink, inset 0 0 8px 3px pink;
+  }
+}
+
+.blinking-stars-com {
+  animation: blinkingStarsCom 1.2s infinite;
+  position: relative;
 }

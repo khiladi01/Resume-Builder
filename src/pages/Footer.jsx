@@ -24,8 +24,8 @@ const Footer = () => {
     
     {/* Brand */}
     <div>
-      <h2 className="text-[#CBD5E1] text-2xl font-medium">Profile Pixel</h2>
-      <p className="text-rose-50 text-sm font-normal pt-4">Profile Pixel helps you craft stunning.</p>
+      <h2 className="text-[#CBD5E1] text-2xl font-medium">Pixel Profile</h2>
+      <p className="text-rose-50 text-sm font-normal pt-4">Pixel Profile helps you craft stunning.</p>
       <p className="text-rose-50 text-sm font-normal pt-1">professional resumes in minutes.</p>
       <p className="text-rose-50 text-sm font-normal pt-1">Whether you're a student, job seeker, or professional, we make your profile stand out.</p>
     </div>
@@ -70,7 +70,7 @@ const Footer = () => {
 
 {/* copyright */}
 <div className="h-[30px] w-full bg-[#1E1E2F] flex justify-center items-center select-none">
-<p className="text-sm text-rose-100">2025 © akki profilepixel all right reserved </p>
+<p className="text-sm text-rose-100">2025 © akki pixelprofile all right reserved </p>
 </div>
         </>
     )

@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom"
 import '../style/resume.css'
 import Swal from "sweetalert2";
-import '../style/resume.css'
 
-const Experience = ({image , firstname , surname , city , country , pincode , phone , email , linkedin , github , summary , skill  , companyname , setCompanyname , date , setDate , domain , setDomain , projectname , setProjectname , detail , setDetail }) => {
+const Project = ({image , firstname , surname , city , country , pincode , phone , email , linkedin , github , summary , skill  , companyname , date  , domain  , projectname ,  detail ,  language , setLanguage , iname , setIname , idate , setIdate , idomain , setIdomain , project , setProject}) => {
+
 
     const handler = (e) => {
           e.preventDefault();
 
-          if(companyname === '' || date === '' || domain === '' || detail === ''){
+          if(iname === '' || idate === '' || idomain === '' || project === '' || language === '') {
             Swal.fire({
-              title: "⚠️ Please fill experience fields",
+              title: "⚠️ Please fill internship fields",
               icon: "warning",
               confirmButtonColor: "#6366F1",
               confirmButtonText: "Okay!",
@@ -44,7 +44,7 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
   {/* Summary Section */}
   <div id="detailsection" className="w-[95%] sm:w-[90%] md:w-[600px] h-[900px]  bg-gray-200 shadow-md">
     <div className="h-[200px] flex justify-center items-center">
-      <h2 className="text-4xl text-slate-700 font-medium">Let Your Experience Speak</h2>
+      <h2 className="text-4xl text-slate-700 font-medium">Internship Experience</h2>
     </div>
 
     <div className="h-[820px] w-full flex justify-center">
@@ -53,8 +53,8 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
       <div>
         <input
         type="text"
-        value={companyname}
-        onChange={(e) => setCompanyname(e.target.value)}
+        value={iname}
+        onChange={(e) => setIname(e.target.value)}
         placeholder="Company Name"
         className="w-[380px] h-[40px] rounded-md bg-white border-[2px] outline-0 border-slate-400 pl-5"
         />
@@ -63,9 +63,9 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
       <div>
         <input
         type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        placeholder="Company Name"
+        value={idate}
+        onChange={(e) => setIdate(e.target.value)}
+        placeholder="Internship joining date"
         className="w-[380px] h-[40px] rounded-md bg-white border-[2px] outline-0 border-slate-400 pl-5"
         />
       </div>
@@ -73,30 +73,30 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
       <div>
         <input
         type="text"
-        value={domain}
-        onChange={(e) => setDomain(e.target.value)}
-        placeholder="Company Name"
+        value={idomain}
+        onChange={(e) => setIdomain(e.target.value)}
+        placeholder="Internship domain"
         className="w-[380px] h-[40px] rounded-md bg-white border-[2px] outline-0 border-slate-400 pl-5"
         />
       </div>
-      <div className="pl-5 pt-2"><label htmlFor="summary">Project Name</label></div>
+      <div className="pl-5 pt-2"><label htmlFor="summary">Project</label></div>
       <div>
         <input
         type="text"
-        value={projectname}
-        onChange={(e) => setProjectname(e.target.value)}
-        placeholder="Company Name"
+        value={project}
+        onChange={(e) => setProject(e.target.value)}
+        placeholder="Internship Project"
         className="w-[380px] h-[40px] rounded-md bg-white border-[2px] outline-0 border-slate-400 pl-5"
         />
       </div>
-      <div className="pl-5 pt-2"><label htmlFor="summary">Work</label></div>
+      <div className="pl-5 pt-2"><label htmlFor="summary">Language</label></div>
       <div>
         <input
         type="text"
-        value={detail}
-        onChange={(e) => setDetail(e.target.value)}
-        placeholder="Company Name"
-        className="w-[380px] h-[100px] rounded-md bg-white border-[2px] outline-0 border-slate-400 pl-5"
+        value={language}
+        onChange={(e) => setLanguage(e.target.value)}
+        placeholder="Language"
+        className="w-[380px] h-[40px] rounded-md bg-white border-[2px] outline-0 border-slate-400 pl-5"
         />
       </div>
 
@@ -146,7 +146,7 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
           <div className="h-[30px] w-full flex justify-center items-center">___________________________</div>
           {/* Skill */}
 
-          <div className="w-full flex justify-center items-center">
+          <div className="h-[30px] w-full flex justify-center items-center">
             <p className="text-lg text-black font-bold">Skills</p>
           </div>
           <div className="w-full flex justify-center">
@@ -154,7 +154,20 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
             <p className="text-sm text-gray-600 font-normal pt-[5px]">{skill}</p>
           </div>
           </div>
+
           <div className="h-[30px] w-full flex justify-center items-center">___________________________</div>
+          {/* Language */}
+    
+          <div className="h-[30px] w-full flex justify-center items-center">
+            <p className="text-lg text-black font-bold">Language</p>
+          </div>
+          <div className="w-full flex justify-center">
+            <div className="w-[80px] pl-1 grid">
+            <p className="text-sm text-gray-600 font-normal pt-[5px]">{language}</p>
+          </div>
+          </div>
+
+          {/* Main div closing of left side container */}
         </div>
 
         {/* Right Side Placeholder */}
@@ -173,7 +186,7 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
 
           {/* Experience */}
           <div className="h-[30px] w-[391px] flex justify-center items-center">
-            <p className="text-lg text-black font-bold">Work Experience</p>
+            <p className="text-lg text-black font-bold">Experience</p>
           </div>
           <div className="pt-[10px] grid place-content-center">
             <div className="w-[300px]">
@@ -183,25 +196,48 @@ const Experience = ({image , firstname , surname , city , country , pincode , ph
             <p className="text-sm text-gray-600 pt-3">{detail}</p>
             </div>
           </div>
+          <div className="h-[30px] w-full flex justify-center items-center">_____________________________________________</div>
+
+          {/* Internship */}
+          <div className="h-[30px] w-[391px] flex justify-center items-center">
+            <p className="text-lg text-black font-bold">Internship</p>
+          </div>
+          <div className="pt-[10px] grid place-content-center">
+          <div className="w-[300px]">
+            <p className="text-sm text-gray-600 pt-2"><strong>{iname}</strong> | {idomain} | {idate}</p>
+            </div>
+            </div>
+            <div className="h-[30px] w-full flex justify-center items-center">_____________________________________________</div>
+ 
+            {/* Project Work */}
+          <div className="h-[30px] w-[391px] flex justify-center items-center">
+            <p className="text-lg text-black font-bold">Project Work</p>
+          </div>
+          <div className="pt-[10px] grid place-content-center">
+          <div className="w-[300px]">
+            <p className="text-sm text-gray-600 pt-2"><strong>{project}</strong> | {idomain} | {idate}</p>
+            </div>
+            </div>
+          </div>
+          </div>
+
         </div>
 
       </div>
     </div>
-  </div>
 
-</div>
 
 {/* Buttons */}
 <div className="w-full flex flex-col md:flex-row justify-center items-center gap-4 md:gap-[830px] mt-4 p-5">
   <button id="resumebutton" className="w-[200px] h-[45px] border-0 outline-0 rounded-full bg-transparent hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
-    <Link to='/skill' className="text-[18px] text-slate-600 font-medium hover:text-slate-500">Back</Link>
+    <Link to='/experience' className="text-[18px] text-slate-600 font-medium hover:text-slate-500">Back</Link>
   </button>
   <button onClick={handleLaunch} id="resumebutton" className="w-[200px] h-[45px] border-0 outline-0 rounded-full bg-indigo-300 hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
-    <Link to='/project' className="text-[18px] text-slate-600 font-medium hover:text-slate-600">Continue</Link>
+    <Link to='/resume' className="text-[18px] text-slate-600 font-medium hover:text-slate-600">Continue</Link>
   </button>
 </div>
 
         </>
     )
 }
-export default Experience;
+export default Project;
