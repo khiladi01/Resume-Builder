@@ -81,7 +81,7 @@ const Header = () => {
       {/* Sub Header */}
       <div className="h-[30px] w-full flex justify-center items-center bg-rose-50 shadow-sm select-none px-4 text-center">
         <p className="text-sm text-slate-600 italic tracking-wide">
-          Your next move begins here. Profile Pixel is ready
+          Your next move begins here. Pixel Profile is ready
         </p>
       </div>
     </>

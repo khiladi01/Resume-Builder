@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import '../style/resume.css';
 import Swal from "sweetalert2";
+import { useState, useEffect } from "react";
 
 const Skill = ({ image, firstname, surname, city, country, pincode, phone, email, linkedin, github, summary , skill , setSkill }) => {
+  const [animateH2, setAnimateH2] = useState(false);
+
+  useEffect(() => {
+    setAnimateH2(true);
+  }, []);
 
   const handler = (e) => {
     e.preventDefault();
@@ -41,7 +47,7 @@ const Skill = ({ image, firstname, surname, city, country, pincode, phone, email
       <div className="min-h-[1000px] w-full bg-white flex flex-col lg:flex-row justify-center items-center gap-5 select-none">
         <div id="detailsection" className="w-[95%] sm:w-[90%] md:w-[600px] h-[900px]  bg-gray-200 shadow-md">
           <div className="h-[200px] flex justify-center items-center">
-            <h2 className="text-4xl text-slate-700 font-medium">Flex Your Expertise</h2>
+            <h2 className={`text-4xl text-slate-700 font-medium ${animateH2 ? 'left-to-right-bulge' : ''}`}>Flex Your Expertise</h2>
           </div>
 
           <div className="h-[820px] w-full flex justify-center">
@@ -54,8 +60,8 @@ const Skill = ({ image, firstname, surname, city, country, pincode, phone, email
                   type="text"
                   value={skill}
                   onChange={(e) => setSkill(e.target.value)}
-                  placeholder="Add skills"
-                  className="w-[380px] h-[40px] rounded-md bg-white border-[2px] border-slate-400 pl-5"
+                  placeholder="Add your skills here"
+                  className="w-[380px] h-[40px] rounded-md bg-white border-[2px] border-slate-400 pl-5 outline-0 input-bulge"
                 />
               </div>
 
@@ -63,7 +69,7 @@ const Skill = ({ image, firstname, surname, city, country, pincode, phone, email
               </div>
 
               <div className="h-[50px] w-full pt-5 flex justify-center items-center">
-                <div id='detailsubmitbutton' className="rounded-full bg-rose-100 text-slate-700 font-medium hover:text-slate-800 cursor-pointer">
+                <div id='detailsubmitbutton' className="rounded-full bg-rose-100 hover:bg-rose-200 duration-300 transition-all ease-in-out text-slate-700 font-medium hover:text-slate-800 cursor-pointer">
                   <input type="submit" value="Submit" className="text-[17px]" />
                 </div>
               </div>
@@ -131,8 +137,9 @@ const Skill = ({ image, firstname, surname, city, country, pincode, phone, email
         </div>
       </div>
 
+      {/* Button */}
       <div className="w-full flex flex-col md:flex-row justify-center items-center gap-4 md:gap-[830px] mt-4 p-5">
-        <button id="resumebutton" className="w-[200px] h-[45px] border-0 outline-0 rounded-full bg-transparent hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
+        <button className="w-[200px] h-[45px] border-[1px] border-blue-700 outline-0 rounded-full bg-transparent hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
           <Link to='/summary' className="text-[18px] text-slate-600 font-medium hover:text-slate-500">Back</Link>
         </button>
         <button onClick={handleLaunch} id="resumebutton" className="w-[200px] h-[45px] border-0 outline-0 rounded-full bg-indigo-300 hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">

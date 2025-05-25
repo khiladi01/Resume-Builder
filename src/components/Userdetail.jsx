@@ -7,12 +7,14 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
 
     const [activeInput, setActiveInput] = useState(null);
     const [completedInputs, setCompletedInputs] = useState([]);
+    const [animateH2, setAnimateH2] = useState(false);
 
     useEffect(() => {
         const savedImage = localStorage.getItem('userImage');
         if (savedImage) {
             setImage(savedImage);
         }
+        setAnimateH2(true);
     }, [setImage]);
 
     const handler = (e) => {
@@ -115,7 +117,7 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
   {/* Detail Section */}
   <div id="detailsection" className="w-[95%] sm:w-[90%] md:w-[600px] h-[900px] bg-gray-200 shadow-md">
     <div className="h-[100px] flex justify-center items-center">
-      <h2 className="text-4xl text-slate-700 font-medium">Tell Us About Yourself</h2>
+      <h2 className={`text-4xl text-slate-700 font-medium ${animateH2 ? 'left-to-right-bulge' : ''}`}>Tell Us About Yourself</h2>
     </div>
 
     <div className="h-[820px] w-full flex justify-center">
@@ -133,9 +135,9 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
 
         {[  
           { label: "First Name", value: firstname, onChange: setFirstname, placeholder: "Purav" },
-          { label: "Surname", value: surname, onChange: setSurname, placeholder: "Rajput" },
-          { label: "City", value: city, onChange: setCity },
-          { label: "Country", value: country, onChange: setCountry },
+          { label: "Surname", value: surname, onChange: setSurname, placeholder: "Raj" },
+          { label: "City", value: city, onChange: setCity , placeholder: "Madhubani" },
+          { label: "Country", value: country, onChange: setCountry , placeholder: "India" },
           { label: "Pincode", value: pincode, onChange: setPincode, placeholder: "Pin Code" },
         ].map((field, i) => (
           <div key={i}>
@@ -152,7 +154,7 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
                 placeholder={field.placeholder || ""}
                 className={`w-[380px] h-[40px] bg-white border-[2px] border-slate-400 rounded-md pl-5 outline-0
                   ${activeInput === field.label ? 'blinking-stars' : ''}
-                  ${completedInputs.includes(field.label) ? 'bulging-effect' : ''}
+                  ${completedInputs.includes(field.label) ? 'bulging-effect input-bulge' : ''}
                   ${activeInput === field.label + '-com' ? 'blinking-stars-com' : ''}
                 `}
               />
@@ -216,7 +218,7 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
 
         {/* Submit Button */}
         <div className="h-[30px] w-full pt-5 flex justify-center items-center">
-          <div id='detailsubmitbutton' className="rounded-full bg-rose-100 text-slate-700 font-medium hover:text-slate-800 cursor-pointer">
+          <div id='detailsubmitbutton' className="rounded-full bg-rose-100 hover:bg-rose-200 duration-300 transition-all ease-in-out text-slate-700 font-medium hover:text-slate-800 cursor-pointer">
             <input type="submit" value="Submit" className="text-[17px]" />
           </div>
         </div>
@@ -268,7 +270,7 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
 
 {/* Bottom Buttons */}
 <div className="w-full flex flex-col md:flex-row justify-center items-center gap-4 md:gap-[830px] mt-4 p-2">
-  <button id="resumebutton" className="w-[200px] h-[45px] border-0 outline-0 rounded-full bg-transparent hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
+  <button className="w-[200px] h-[45px] border-[1px] border-blue-700 outline-0 rounded-full bg-transparent hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
     <Link to='/' className="text-[18px] text-slate-600 font-medium hover:text-slate-500">Back</Link>
   </button>
   <button onClick={handleLaunch} id="resumebutton" className="w-[200px] h-[45px] border-0 outline-0 rounded-full bg-indigo-300 hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
