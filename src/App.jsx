@@ -1,4 +1,4 @@
-import { Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
@@ -166,6 +166,7 @@ function App() {
 
       </Routes>
       <Footer />
+
     </>
   )
 }

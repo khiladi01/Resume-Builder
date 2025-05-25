@@ -1,6 +1,13 @@
-import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import html2pdf from "html2canvas";
+import '../style/resume.css';
+import {
+  Document,
+  Page,
+  Text,
+  StyleSheet,
+  PDFDownloadLink,
+  Image 
+} from '@react-pdf/renderer';
 
 const Resume = ({
   image,
@@ -26,39 +33,97 @@ const Resume = ({
   idomain,
   project,
 }) => {
-  const resumeRef = useRef();
 
-  const handleDownload = () => {
-    const element = resumeRef.current;
-    const options = {
-      margin: 0.4,
-      filename: `${firstname}_Resume.pdf`,
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, logging: false, dpi: 192, letterRendering: true },
-      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
-    };
-    html2pdf().set(options).from(element).save();
-  };
+  const styles = StyleSheet.create({
+  page: {
+    padding: 30,
+    fontSize: 12,
+    fontFamily: 'Helvetica',
+    backgroundColor: '#fff',
+  },
+  header: {
+    fontSize: 24,
+    marginBottom: 12,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    textAlign: 'center',
+  },
+  sectionHeader: {
+    fontSize: 16,
+    marginTop: 10,
+    marginBottom: 6,
+    fontWeight: 'bold',
+    color: '#34495e',
+    borderBottomWidth: 1,
+    borderBottomColor: '#bdc3c7',
+    paddingBottom: 4,
+  },
+  text: {
+    marginBottom: 4,
+    color: '#4a4a4a',
+  },
+  link: {
+    color: '#2980b9',
+    textDecoration: 'underline',
+  },
+  containerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
+});
+
+
+const ResumeDocument = (props) => (
+  <Document>
+    <Page style={styles.page}>
+     {image && (
+      <Image
+      src={image}
+      style={{ width: 100, height: 100, borderRadius: 50, marginBottom: 10 }}
+      />
+      )}
+      <Text style={styles.header}>{props.firstname} {props.surname}</Text>
+
+      <Text style={styles.sectionHeader}>Contact</Text>
+      <Text style={styles.text}>{props.city} | {props.pincode} | {props.country}</Text>
+      <Text style={styles.text}>{props.phone}</Text>
+      <Text style={styles.text}>{props.email}</Text>
+      <Text style={[styles.text, styles.link]}>{props.linkedin}</Text>
+      <Text style={[styles.text, styles.link]}>{props.github}</Text>
+
+      <Text style={styles.sectionHeader}>Summary</Text>
+      <Text style={styles.text}>{props.summary}</Text>
+
+      <Text style={styles.sectionHeader}>Skills</Text>
+      <Text style={styles.text}>{props.skill}</Text>
+
+      <Text style={styles.sectionHeader}>Experience</Text>
+      <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>{props.companyname}</Text> | {props.date}</Text>
+      <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>{props.domain}</Text></Text>
+      <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>{props.projectname}</Text></Text>
+      <Text style={styles.text}>{props.detail}</Text>
+
+      <Text style={styles.sectionHeader}>Internship</Text>
+      <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>{props.iname}</Text> | {props.idomain} | {props.idate}</Text>
+
+      <Text style={styles.sectionHeader}>Project Work</Text>
+      <Text style={styles.text}><Text style={{fontWeight: 'bold'}}>{props.project}</Text> | {props.idomain} | {props.idate}</Text>
+
+      <Text style={styles.sectionHeader}>Languages</Text>
+      <Text style={styles.text}>{props.language}</Text>
+    </Page>
+  </Document>
+);
+
 
   return (
     <>
-      {/* Download Button Container (separate from preview) */}
-      <div className="w-full flex justify-center mt-6 mb-4 select-none">
-        <button
-          onClick={handleDownload}
-          className="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 transition duration-300"
-          aria-label="Download Resume as PDF"
-        >
-          Download Resume PDF
-        </button>
-      </div>
 
       {/* Resume Preview Section */}
       <div className="min-h-[1000px] w-full bg-white flex flex-col lg:flex-row justify-center items-center select-none">
         <div
-          ref={resumeRef}
-          id="previewsection"
-          className="w-[95%] sm:w-[90%] md:w-[600px] h-[900px] bg-gray-200 shadow-md mt-5 lg:mt-0"
+          className="w-[95%] sm:w-[90%] md:w-[600px] h-[900px] bg-rose-50 shadow-md mt-5 lg:mt-0"
         >
           <div className="h-[80px] flex justify-center items-center">
             <h2 className="text-4xl text-slate-700 font-medium">Resume</h2>
@@ -209,6 +274,46 @@ const Resume = ({
           </div>
         </div>
       </div>
+
+      {/* Download Button */}
+  <div className="w-full h-[50px] flex justify-center items-center">
+      <PDFDownloadLink id="resumedownload"
+  document={<ResumeDocument
+    image={image}
+    firstname={firstname}
+    surname={surname}
+    city={city}
+    country={country}
+    pincode={pincode}
+    phone={phone}
+    email={email}
+    linkedin={linkedin}
+    github={github}
+    skill={skill}
+    language={language}
+    summary={summary}
+    companyname={companyname}
+    date={date}
+    domain={domain}
+    projectname={projectname}
+    detail={detail}
+    iname={iname}
+    idate={idate}
+    idomain={idomain}
+    project={project}
+  />}
+  fileName={`${firstname}_${surname}_Resume.pdf`}
+>
+  {({ loading }) => (loading ? 'Preparing document...' : 'Download Resume PDF')}
+</PDFDownloadLink>
+      </div>
+
+      {/* Buttons */}
+<div className="w-full flex flex-col md:flex-row justify-center items-center gap-4 md:gap-[830px] mt-4 p-2">
+  <button id="resumebutton" className="w-[200px] h-[45px] border-0 outline-0 rounded-full bg-transparent hover:scale-105 duration-300 transition-all ease-in-out cursor-pointer">
+    <Link to='/project' className="text-[18px] text-slate-600 font-medium hover:text-slate-500">Back</Link>
+  </button>
+</div>
     </>
   );
 };

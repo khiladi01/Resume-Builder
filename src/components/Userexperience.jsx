@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import '../style/resume.css'
 import Swal from "sweetalert2";
-import '../style/resume.css'
 
 const Experience = ({image , firstname , surname , city , country , pincode , phone , email , linkedin , github , summary , skill  , companyname , setCompanyname , date , setDate , domain , setDomain , projectname , setProjectname , detail , setDetail }) => {
 
