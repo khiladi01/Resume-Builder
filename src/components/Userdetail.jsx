@@ -129,7 +129,7 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
           <input 
             type="file"
             onChange={handleImageChange}
-            className="w-[220px] h-[40px] bg-white border-[2px] border-slate-400 rounded-full pl-5 outline-0"
+            className="w-full h-[40px] bg-white border-[2px] border-slate-400 rounded-md pl-5 outline-0"
           />
         </div>
 
@@ -217,7 +217,7 @@ const Detail = ({image , setImage , firstname , setFirstname , surname , setSurn
         ))}
 
         {/* Submit Button */}
-        <div className="h-[30px] w-full pt-5 flex justify-center items-center">
+        <div className="h-[30px] w-full pt-12 flex justify-center items-center">
           <div id='detailsubmitbutton' className="rounded-full bg-rose-100 hover:bg-rose-200 duration-300 transition-all ease-in-out text-slate-700 font-medium hover:text-slate-800 cursor-pointer">
             <input type="submit" value="Submit" className="text-[17px]" />
           </div>
