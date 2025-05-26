@@ -1,12 +1,43 @@
-# React + Vite
+# 📄 Resume Builder – Pixel Profile
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive resume builder built with **React.js** and **Tailwind CSS**, featuring **live preview** and **PDF export** using `@react-pdf/renderer`. Designed for users who want a seamless, minimal, and interactive resume-building experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⚡ Live resume preview as you type
+- 📄 Download resume as a high-quality PDF
+- 💻 Clean, responsive UI with Tailwind CSS
+- 🧠 Built with modern React practices
+- 🎯 Perfect for devs and creatives building resumes fast
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js, Tailwind CSS
+- **PDF Generation:** @react-pdf/renderer
+
+---
+
+## 📸 Demo
+
+🌐 **Live Demo:** [https://khiladi01.github.io/Resume-Builder/]
+
+---
+
+## 💻 Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/khiladi01/resume-builder.git
+
+# Move into the project folder
+cd resume-builder
+
+# Install dependencies
+npm install
+
+# Run the app
+npm run dev
